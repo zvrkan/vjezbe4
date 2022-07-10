@@ -1,0 +1,69 @@
+<?php
+
+// Painter.php
+
+class Painter
+{
+    protected $oblici_array = array();
+    protected $odabir;
+
+    function __construct()
+    {
+        $this->getDostupniOblici();
+        $this->odaberiOblik();
+    }
+
+    function odaberiOblik()
+    {
+        echo "Odaberite oblik koji zelite ispisati:\n";
+
+        foreach($this->oblici_array as $key => $val)
+        {
+            echo "(".$key.") - ".$val."\n";
+        }
+
+        $this->odabir = readline("Oblik: ");
+    }
+
+    function getDostupniOblici()
+    {        
+        $files = scandir(__DIR__ . "\\oblici");
+
+        if(is_array($files))
+        {
+            foreach($files as $key => $file)
+            {
+                if($file != "." && $file != "..")
+                {
+                    include("oblici/" . $file);
+
+                    $class = trim($file, ".php");
+
+                    $this->oblici_array[] = $class;
+                }
+            }
+        }
+    }
+
+    function crtaj()
+    {
+        $o = $this->odabir;
+
+        $class = $this->oblici_array[$o];
+
+        $oblik = new $class();
+
+        if($oblik instanceof Oblik)
+        {
+            $oblik->getDimenzije();
+
+            echo $oblik->Print();
+        }
+        else
+        {
+            die("Error: Klasa nije instanca od Oblik klase");
+        }
+    }
+}
+
+?>
