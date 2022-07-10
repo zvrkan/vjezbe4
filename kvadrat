@@ -1,0 +1,32 @@
+<?php
+
+// Kvadrat
+
+class Kvadrat implements Oblik
+{
+    protected $sirina;
+
+    function getDimenzije()
+    {
+        $this->sirina = readline("Upisite sirinu: ");
+    }
+
+    function Print()
+    {
+        $ispis = "";
+
+        for($i=1; $i<=$this->sirina; $i++)
+        {
+            for($j=1; $j<=$this->sirina; $j++)
+            {
+                $ispis .= "*";
+            }
+
+            $ispis .= "\n";
+        }
+
+        return $ispis;
+    }
+}
+
+?>
