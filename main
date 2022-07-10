@@ -1,0 +1,13 @@
+<?php
+
+// main.php
+
+include("Oblik.php");
+include("Painter.php");
+
+$painter = new Painter();
+
+echo $painter->crtaj();
+
+
+?>
