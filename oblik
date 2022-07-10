@@ -1,0 +1,11 @@
+<?php
+
+// Oblik.php
+
+interface Oblik
+{
+    function getDimenzije();
+    function Print();
+}
+
+?>
