@@ -1,0 +1,34 @@
+<?php
+
+// Pravokutnik.php
+
+class Pravokutnik implements Oblik
+{
+    protected $visina;
+    protected $sirina;
+
+    function getDimenzije()
+    {
+        $this->sirina = readline("Upisite sirinu: ");
+        $this->visina = readline("Upisite visina: ");
+    }
+
+    function Print()
+    {
+        $ispis = "";
+
+        for($i=1; $i<=$this->visina; $i++)
+        {
+            for($j=1; $j<=$this->sirina; $j++)
+            {
+                $ispis .= "*";
+            }
+
+            $ispis .= "\n";
+        }
+
+        return $ispis;
+    }    
+}
+
+?>
